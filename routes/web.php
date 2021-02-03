@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\CategoriesController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ArticlesController;
+use App\Http\Controllers\frontend\frontendController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,5 +26,13 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('/dashboard',[DashboardController::class,'index']);
     Route::resource('categories',CategoriesController::class);
     Route::resource('articles',ArticlesController::class);
+  
+
+});
+Route::group(['prefix'=>'front'],function(){
+
+    Route::get('/frontend',[frontendController::class,'index']);
+ 
+  
 
 });
