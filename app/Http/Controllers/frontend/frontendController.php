@@ -18,7 +18,7 @@ class frontendController extends Controller
     {
         //
         $articale=Article::orderBy('id','desc')->where('is_active',1)->get();
-        $categories=Category::orderBy('id','desc')->where('is_active',1)->get();
+        $categories=Category::orderBy('id','desc')->where('is_active',1)->where('parent',0)->get();
         return view('front.front_page')->with('cats',$categories)->with('arte',$articale); 
 
     }
