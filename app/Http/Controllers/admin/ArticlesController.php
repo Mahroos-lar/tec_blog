@@ -7,21 +7,25 @@ use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use GrahamCampbell\ResultType\Result;
-
-
+    //  public $category_id= new request;
+    
 class ArticlesController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
- 
-    public function index()
+    
+
+    public function index(Request $request)
     {
+        
         $articale=Article::orderBy('id','desc')->get();
-     
-        return view('admin.article_list',['cat'=>3])->with('arte',$articale);
+        $this->glob_cat_id = $request->input('catId');
+        //   glob_cat_id
+        return view('admin.article_list',['cat'=>$this->glob_cat_id])->with('arte',$articale);
     }
 
     /**
@@ -43,11 +47,12 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
+      //  echo 'zxcsadasdas'.$glob_cat_id;
         $is_active=$request->has('is_active')?1:0;
         $newart=new Article();
         $newart->title=$request->input('title');
         $newart->content=$request->input('content');
-        $newart->cat_id=3;
+        $newart->cat_id=$request->input('cat_id');
         $newart->is_active=$is_active;
         $result=$newart->save();
         if($result>0)

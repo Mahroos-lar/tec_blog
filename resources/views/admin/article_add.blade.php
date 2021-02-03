@@ -49,6 +49,7 @@
                     <div class="form-group">
                       <label for="exampleInputEmail1">content :</label>
                       <input type="text" class="form-control"  name="content" id="exampleInputEmail1">
+                      <input type="hidden" name="cat_id" value="{{request('catId')}}"></td>
                     </div>
              
 

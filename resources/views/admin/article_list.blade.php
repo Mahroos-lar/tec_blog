@@ -39,7 +39,7 @@
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
                     <a href="{{route('categories.index')}}" class="btn btn-info"><--- back</a><br>
-                    <a href="{{route('articles.create')}}" class="btn btn-success">Add New</a>
+                    <a href="{{route('articles.create',['catId'=>request('catId')])}}" class="btn btn-success">Add New</a>
               
                   </div>
                 </div>
@@ -74,7 +74,6 @@
                       <td>{{$article->id}}</td>
                       <td>{{$article->title}}</td>
                       <td>{{$article->content}}
-                      <input type="hidden" name="cat_id" value="{{$cat}}"></td>
                       <td>@if($article->is_active==1)Active @else Not Active @endif</td>
                       <td><span class="tag tag-danger">{{$article->created_at}}</span></td>
                       <td>{{$article->updated_at}}</td>
